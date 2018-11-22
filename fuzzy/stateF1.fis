@@ -1,0 +1,111 @@
+[System]
+Name='estadoF1Temp2'
+Type='mamdani'
+Version=2.0
+NumInputs=8
+NumOutputs=1
+NumRules=23
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='eogM'
+Range=[-1 1]
+NumMFs=3
+MF1='bajo':'trapmf',[-1.72 -1.1 -0.8 -0.5]
+MF2='medio':'trapmf',[-0.7 -0.4 -0.1 0.2]
+MF3='alto':'trapmf',[0 0.3 1.1 1.2]
+
+[Input2]
+Name='eogX'
+Range=[-1 1]
+NumMFs=3
+MF1='bajo':'trapmf',[-1.9 -1.1 -0.5 -0.2]
+MF2='medio':'trapmf',[-0.5 -0.2 0.1 0.4]
+MF3='alto':'trapmf',[0.1 0.4 1.1 1.85]
+
+[Input3]
+Name='emg'
+Range=[-1 1]
+NumMFs=3
+MF1='bajo':'trapmf',[-1.72 -1.08 -0.9 -0.7]
+MF2='medio':'trapmf',[-0.9 -0.7 -0.6 -0.4]
+MF3='alto':'trapmf',[-0.6 -0.4 1.08 1.72]
+
+[Input4]
+Name='alpha'
+Range=[0 1]
+NumMFs=3
+MF1='bajo':'trapmf',[-0.61 -0.29 0.05 0.2]
+MF2='medio':'trapmf',[0.1 0.15 0.3 0.35]
+MF3='alto':'trapmf',[0.25 0.4 1.065 1.115]
+
+[Input5]
+Name='beta'
+Range=[0 1]
+NumMFs=3
+MF1='bajo':'trapmf',[-0.615 -0.295 0.05 0.2]
+MF2='medio':'trapmf',[0.1 0.2 0.25 0.35]
+MF3='alto':'trapmf',[0.25 0.4 1.163 1.21]
+
+[Input6]
+Name='theta'
+Range=[0 1]
+NumMFs=3
+MF1='bajo':'trapmf',[-0.36 -0.04 0.05 0.2]
+MF2='medio':'trapmf',[0.1 0.15 0.3 0.35]
+MF3='alto':'trapmf',[0.25 0.4 1.04 1.36]
+
+[Input7]
+Name='delta'
+Range=[0 1]
+NumMFs=3
+MF1='bajo':'trapmf',[-0.3 -0.05 0.3 0.45]
+MF2='medio':'trapmf',[0.3 0.45 0.6 0.75]
+MF3='alto':'trapmf',[0.6 0.75 1.04 1.36]
+
+[Input8]
+Name='spindles'
+Range=[0 1]
+NumMFs=3
+MF1='bajo':'trapmf',[-0.2 -0.1 0.2 0.5]
+MF2='alto':'trapmf',[0.5 0.8 1.1 1.5]
+MF3='medio':'trapmf',[0.3 0.4 0.6 0.7]
+
+[Output1]
+Name='state1'
+Range=[0 1]
+NumMFs=5
+MF1='minimo':'trimf',[-0.5 0 0.2]
+MF2='bajo':'trimf',[0.1 0.3 0.5]
+MF3='medio':'trimf',[0.4 0.5 0.6]
+MF4='alto':'trimf',[0.5 0.7 0.9]
+MF5='maximo':'trimf',[0.8 1 2]
+
+[Rules]
+0 0 1 1 1 1 0 0, 1 (1) : 1
+0 0 0 3 0 3 3 0, 1 (1) : 2
+2 2 -3 2 2 2 1 0, 2 (0.1) : 1
+2 3 -3 2 2 0 1 0, 1 (1) : 1
+2 -3 2 1 1 2 -3 0, 2 (0.1) : 1
+0 0 3 0 0 0 0 2, 1 (0.1) : 2
+1 -3 1 2 1 2 2 1, 5 (1) : 1
+2 3 2 2 2 -3 1 0, 2 (1) : 1
+3 3 0 0 0 0 0 0, 1 (1) : 1
+1 1 2 2 2 2 2 1, 5 (1) : 1
+2 2 2 2 2 1 2 0, 2 (0.1) : 1
+2 3 -3 2 1 0 2 0, 2 (1) : 1
+-3 1 1 1 1 1 2 0, 2 (1) : 1
+2 3 1 1 2 1 2 0, 2 (0.1) : 1
+1 1 1 2 2 2 1 0, 2 (0.1) : 1
+2 -3 -3 2 0 2 2 -2, 5 (1) : 1
+-3 3 0 0 0 0 0 0, 1 (1) : 1
+1 -3 1 2 3 2 -3 -2, 4 (1) : 1
+-1 -1 1 2 3 1 1 0, 2 (1) : 1
+2 2 2 2 2 2 1 1, 2 (1) : 1
+1 1 1 2 2 2 2 1, 4 (1) : 1
+1 1 1 1 2 2 2 1, 5 (1) : 1
+1 2 1 1 1 2 2 1, 4 (1) : 1
